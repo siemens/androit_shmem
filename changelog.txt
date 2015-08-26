@@ -1,0 +1,247 @@
+
+NOTE: A very detailed description can be found in
+	Marvin Damschen. Concurrent shared memory access for Android applications and real-time processes. Bachelor Thesis, 2012.
+
+
+---------------- Changelog ----------------
+
+commit 06f29411a47f0e4839b51a0718571bd275e68026
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Sep 7 16:22:33 2012 +0200
+
+    final touches
+
+commit f4ca6a03e207838c1a620e788fefeac0e8fd3a9b
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Sep 7 12:57:17 2012 +0200
+
+    minor changes to Android.mk
+
+commit 2fd30f7a423fa18e6d7f58a3d374659f5397d975
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Sep 7 12:54:25 2012 +0200
+
+    update Android.mk to cover init.androitshmem.rc/sh
+
+commit 56b272bc65324eded4d1e6be0545208582416dc6
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Mon Sep 3 16:29:22 2012 +0200
+
+    goto -> while
+
+commit ea7f8bcbae7cf8c0c210468fbe0eb91eb7f389b6
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Mon Sep 3 13:02:33 2012 +0200
+
+    goto -> while
+
+commit b5017f6db39c5ab5fc9d9e08b8eac1118256b25d
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Aug 31 19:09:30 2012 +0200
+
+    rename map.txt to map
+
+commit ff80a51167d3a15c5a8ace173750c5ae0f49034e
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 29 18:34:39 2012 +0200
+
+    small update
+
+commit 3ddf8fd615db3148e21a0486b79e0a8c1261ef70
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Sun Aug 26 16:02:03 2012 +0200
+
+    Error handling in updateByteBuffer()
+
+commit 85b4eebcc73728c17da59de1fb339e267c5d5128
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Sat Aug 25 18:18:57 2012 +0200
+
+    minor cleanup
+
+commit 55ffa456ca6dad7eab4f4cdfa76c2c4b67903322
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Aug 17 20:39:09 2012 +0200
+
+    move SharedMem.java to AndroitShmemApp
+
+commit 3d60f5502a5b47dc273397a0ae713a13cbbe96c8
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Fri Aug 17 20:33:52 2012 +0200
+
+    Added AndoitShmemApp
+
+commit 66cd0b1daa9e7c8fb94466319ef7ccfd701d17e8
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 18:23:53 2012 +0200
+
+    minor cleanup
+
+commit aa798b81a9844b8948392ce1255addba8968801a
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 18:06:38 2012 +0200
+
+    SharedMem.java cleanup/comments
+
+commit 79222d5d6b3fb9072658dc2422a9ac090e90f5db
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 17:53:34 2012 +0200
+
+    shmem-lib.cc cleanup/comments
+
+commit 0ecb67361c38a429d5f22b1ce44f0803ccadd678
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 17:28:19 2012 +0200
+
+    update/comment time measurement client
+
+commit 5d76eda43b0ee37a0021270aead9b2d77a1def54
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 17:23:35 2012 +0200
+
+    AndroitShmemClient.cc comments/cleanup
+
+commit 0c91d1de52a08e723e35a236a12e4e867b6af421
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 17:06:27 2012 +0200
+
+    AndroitShmemServer.cc cleanup/comments
+
+commit 54ad0085575cc32913159bc1bee0d1caf9e7d828
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 15 16:23:25 2012 +0200
+
+    IAndroitShmem.cc comments
+
+commit 932db57e94eec96ecbfe300643016619877f95f8
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Aug 14 20:40:28 2012 +0200
+
+    comment IAndroitShmem.h
+
+commit 8622db0aeaa1491adc42765cd6ef8c88ead2beee
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Aug 14 20:33:35 2012 +0200
+
+    comment IAndroitShmem.h
+
+commit 0217df1ebecf2dfc2bdc5f54eed4c6ac85f56dfa
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Aug 14 19:26:13 2012 +0200
+
+    commented model
+
+commit 18d3273199792f91a92638f3fdbb02ceba99e3a3
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Aug 14 18:59:20 2012 +0200
+
+    added assertions to model - runs fine :-)
+
+commit ab582709a9207a2ad4b78b5b0af4224d1dc6ca1d
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Aug 14 18:06:03 2012 +0200
+
+    Initial promela model
+
+commit 58bff58949b54607d726ddb28577ce9d179daa6a
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Thu Aug 2 21:06:10 2012 +0200
+
+    remove obsolete lock
+
+commit 6efe852d942d6b586888469a5f8960cdc37e0ab4
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Thu Aug 2 20:47:22 2012 +0200
+
+    Lock-free version!
+
+commit e6bfcb35ea9b0f45ecf837717a89c3d9d6da7270
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Thu Aug 2 17:41:43 2012 +0200
+
+    minor cleanup
+
+commit c253a5ae0249b9992d7814ff68e4031058d51d77
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Thu Aug 2 16:32:53 2012 +0200
+
+    Transactions (non-RT write) implemented with lock
+
+commit a9d26b255d1f70cd0612b7bdcdca402bb9250208
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 20:57:12 2012 +0200
+
+    On the way to non-RT writing... shared data supports transactions, but not yet fully implemented
+
+commit 00f013c678795ab11f2539c87c89c235c93aa43b
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 17:44:32 2012 +0200
+
+    Split read and write in client
+
+commit fa352436ad3e6b918aeae8c2f68c1b974aa71d42
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 17:38:09 2012 +0200
+
+    Init shared data completely
+
+commit e57157feab6002080f1f5126908ff9a424809647
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 17:25:11 2012 +0200
+
+    Client does write and read test now, one thread only
+    negated result of read_seqretry (+is now read_seqdoretry)
+
+commit 866eadb117e54eb8c7002ccb8b3dd5f4e79be4bd
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 16:40:28 2012 +0200
+
+    handle static variables in AndroitShmemClient correctly
+
+commit ab1d1d4371f633ce691e83d6737e1296167286a9
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Aug 1 16:36:38 2012 +0200
+
+    Denote rt functions/variables as such, handle static variables in shmem-lib correctly
+
+commit 6a11345695660259249c7e61fa0d78cf6baea322
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Jul 31 20:40:53 2012 +0200
+
+    reenable server logging
+
+commit 08072759f1409011fdcaad99fe880ccc53928d58
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Jul 31 20:33:27 2012 +0200
+
+    Minor but important change in Client: sequence must _not_ be manipulated by GCC builtins and its value printed inside a single LOGD/printf! Gives untracable weird results!
+
+commit e1e8cfc6395054f85fbc22454b69b721939d53f9
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Jul 31 18:03:51 2012 +0200
+
+    new AndroitShmemClient for synchronisation-testing
+
+commit 029d55cb853362425cec0d6017c59e77df59e351
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Tue Jul 31 17:55:56 2012 +0200
+
+    initialise shared lock correctly
+
+commit 267a2a7a68dcc321b31d23795c5780777dbb2665
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Thu Jul 19 15:11:20 2012 +0200
+
+    small adjustments
+
+commit b2d9c58c0f9a2ef65a4f612442cc5df4d392df12
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Jul 11 18:39:07 2012 +0200
+
+    volatiles everywhere, actually using tmpfs
+
+commit e01070c67998314e6e58a6e7cb16837e96d1390c
+Author: Marvin Damschen <marvin.damschen@gmail.com>
+Date:   Wed Jul 11 18:34:42 2012 +0200
+
+    initial commit: AndroitShmemClient with added time measurement, memory-mapped file stored in tmpfs

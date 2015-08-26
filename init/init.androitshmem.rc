@@ -1,0 +1,16 @@
+on init
+    # create AndroitShmem mount point
+    mkdir /mnt/shm 0600 root system
+    mount tmpfs tmpfs /mnt/shm mode=0600,gid=0
+    write /mnt/shm/map.txt 0
+    chmod 0600 /mnt/shm/map
+
+on boot
+   # start androitshm (AndroitShmemServer)
+   start androitshm
+
+# declare AndroitShmemServer
+service androitshm /system/bin/init.androitshmem.sh
+	user root
+	group root
+	oneshot

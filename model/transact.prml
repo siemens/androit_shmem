@@ -1,0 +1,125 @@
+byte sequence;
+
+proctype rt_reader() {
+byte start_seq;
+bit active_data;
+
+dowhile: skip;
+	/* Obtain sequence number before read */
+	/* Inlined seq_begin from IAndroitShmem.h */
+	start_seq = sequence;
+	do
+	:: (start_seq & 2) -> skip; start_seq = sequence;
+	:: else -> break;
+	od;
+	
+	/* Determine active data copy */
+	active_data = sequence & 1;	
+	
+	/* If sequence != start_seq, redo read. Otherwise assert sequence is unchanged (protection against rt_writer OK)
+	 * and active data copy is unchanged (protection against nonrt_writer OK) */
+	if
+	:: (sequence != start_seq) -> goto dowhile;
+	:: atomic { else -> assert((active_data == (sequence & 1)) && (sequence == start_seq)) };
+	fi;	
+}
+
+proctype nonrt_reader() {
+	byte start_seq;
+	bit active_data;
+	
+dowhile: skip;
+	/* Wait until rt_write is finished */
+	do
+	:: (sequence & 2) -> skip;
+	:: else -> break;
+	od;
+	
+	/* Obtain sequence number before read */
+	start_seq = sequence;
+	
+	/* Determine active dataset */
+	active_data = sequence & 1;
+	
+	/* If sequence != start_seq, redo read. Otherwise assert sequence is unchanged (protection against rt_writer OK)
+	 * and active dataset is unchanged (protection against nonrt_writer OK) */
+	if
+	:: (sequence != start_seq) -> goto dowhile;
+	:: atomic { else -> assert((active_data == (sequence & 1)) && (sequence == start_seq)) };;
+	fi;
+}
+
+proctype rt_writer() {
+	bit active_data;
+	byte assert_seq;
+	
+	/* Begin write */
+	atomic {
+		/* Assert: 2-bit not set, is reserved to denote RT Write */
+		assert((sequence & 2) == 0);
+		/* Set 2-bit -> RT Write in progress */
+		sequence = sequence + 2;
+		/* Obtain sequence number before read for assertion */
+		assert_seq = sequence;
+	}
+	
+	/* Determine active data copy */
+	active_data = sequence & 1;
+	
+	/* Write to active data copy ... */
+	
+	/* End write */
+	atomic {
+		/* Assert sequence is unchanged and active data copy is unchanged (protection against nonrt_writer OK) */
+		assert((active_data == (sequence & 1)) && (sequence == assert_seq));
+		/* Add 2, to unset 2-bit and increase sequence */
+		sequence = sequence + 2;
+	}
+}
+
+proctype nonrt_writer() {
+	bit update_data;
+	byte start_seq;
+	
+	/* Determine which data copy to update, this is (1 - active data copy) */
+	update_data = 1 - (sequence & 1);
+dowhile: skip;
+
+	/* Inlined seq_begin from IAndroitShmem.h */
+	start_seq = sequence;
+	do
+	:: (start_seq & 2) -> skip; start_seq = sequence;
+	:: else -> break;
+	od;
+	
+	/* Write to inactive data copy ... */
+	
+	bool cas_result;
+	atomic { /* compare and swap */
+		if
+		:: (sequence == start_seq) -> sequence = (start_seq+4)^1; cas_result = true;
+		:: (sequence != start_seq) -> cas_result = false;
+		fi;
+		
+		/* Either CAS was not successful and the active dataset is still the same, 
+		 * or it was successful and the active data copy is now update_data */
+		assert((cas_result == false && sequence != start_seq && (sequence & 1) == 1 - update_data) 
+			|| (cas_result == true && sequence == (start_seq+4)^1 && (sequence & 1) == update_data));
+	}
+	
+	/* Retry write if CAS was unsuccessful, otherwise assert the active data copy is now update_data */
+	if
+	:: (!cas_result) -> goto dowhile;
+	:: else -> assert((sequence & 1) == update_data);
+	fi;
+}
+
+init {
+	sequence = 0;
+	atomic {
+		run rt_writer();
+		run nonrt_writer();
+		run rt_reader();
+		run nonrt_reader();
+	}
+}
