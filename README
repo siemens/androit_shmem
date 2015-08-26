@@ -1,0 +1,8 @@
+AndroitShmem is a shared memory service for Androit. Androit itself is an
+effort to make the Android operating system real-time capable and fulfil
+industrial needs in terms of usability and determinism.
+
+For further details, refer to "M. Damschen: Concurrent shared memory access for
+Android applications and real-time processes", 2012 (Bachelor_thesis.pdf).
+There, possible synchronisation techniques for AndroitShmem are discussed in
+detail.
